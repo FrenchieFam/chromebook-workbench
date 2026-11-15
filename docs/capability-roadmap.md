@@ -24,7 +24,9 @@ A small timed, owner-enabled control could save screen power compared with
 permanent Keep display on. It would need the `power` permission, explicit enable,
 a visible expiry, release on Disconnect/timeout, restart reconciliation, and
 physical battery/AC testing. It must not claim to override lid close, shutdown,
-critical battery or policy. This remains a proposal; no permission was added.
+critical battery or policy. This remains a proposal; no permission was added. Keeping Linux jobs reachable
+with the screen off does not establish that native Chrome input remains visible
+or usable; test those cases separately before claiming browser availability.
 
 ## Use maintained browser tooling when a project needs it
 
