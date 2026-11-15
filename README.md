@@ -115,3 +115,21 @@ make -C optional/chromeos-input all check
 
 MIT licensed. Built by [FrenchieFam](https://github.com/FrenchieFam). No personal
 pairing configuration, account state, private handoff or screenshot is included.
+
+## One-command health check
+
+With the bridge installed on both machines and a dedicated pinned SSH config:
+
+```sh
+python3 tools/pair_health.py --config ~/.ssh/workbench_config --host workbench-worker
+```
+
+Use your actual generated config filename/alias. Add `--json` for structured
+output, or `--local-check /path/to/personal-check` for a separate existing setup.
+The check is read-only and on demand. It reports service availability, connection
+and extension version; an old running extension with newer staged files is flagged
+for reload. The default required worker extension is0.3.1. Exit1 means attention
+is needed. It never resumes an owner-disconnected browser or sends TV controls.
+
+For day-to-day roles and the physical sleep/wake checklist, see
+[working together](docs/working-together.md).
