@@ -1,4 +1,7 @@
 #define _GNU_SOURCE
+#ifndef _FORTIFY_SOURCE
+#define _FORTIFY_SOURCE 2
+#endif
 #include <linux/uinput.h>
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -102,6 +105,9 @@ static int execute(char *command){
  if(!strncmp(command,"click ",6)){int code=!strcmp(command+6,"left")?BTN_LEFT:!strcmp(command+6,"right")?BTN_RIGHT:!strcmp(command+6,"middle")?BTN_MIDDLE:-1;if(code<0)return -1;event(mouse,EV_KEY,code,1);sync_device(mouse);pause_ms(30);event(mouse,EV_KEY,code,0);sync_device(mouse);return 0;}
  return -1;
 }
+static int send_all(int fd,const char *buffer,size_t length){
+ while(length){ssize_t sent=write(fd,buffer,length);if(sent<0&&errno==EINTR)continue;if(sent<=0)return -1;buffer+=sent;length-=(size_t)sent;}return 0;
+}
 static int client(const char *path,const char *command){
  if(strlen(path)>=sizeof socket_path||strlen(command)>7000||strchr(command,'\n')||strchr(command,'\r'))return 2;
  int fd=socket(AF_UNIX,SOCK_STREAM|SOCK_CLOEXEC,0);if(fd<0)fatal("client socket");
@@ -132,7 +138,7 @@ int main(int argc,char **argv){
   while(used<sizeof buf-1){ssize_t n=read(fd,buf+used,sizeof buf-1-used);if(n<=0)break;used+=(size_t)n;if(memchr(buf,'\n',used)){complete=1;break;}}
   buf[used]=0;char *newline=strchr(buf,'\n');if(newline)*newline=0;
   if(complete&&!strcmp(buf,"info")){dprintf(fd,"OK width=%d height=%d version=0.2.0\n",screen_width,screen_height);close(fd);continue;}
-  int result=complete&&used==strlen(buf)+1?execute(buf):-1;const char *response=result?"ERROR invalid or unsupported command\n":"OK\n";write(fd,response,strlen(response));close(fd);
+  int result=complete&&used==strlen(buf)+1?execute(buf):-1;const char *response=result?"ERROR invalid or unsupported command\n":"OK\n";if(send_all(fd,response,strlen(response))<0){close(fd);continue;}close(fd);
  }
  if(listener>=0)close(listener);
  unlink(socket_path);
