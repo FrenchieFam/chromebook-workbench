@@ -88,8 +88,10 @@ live setup, generalized source tests and still-open checks.
 On the tested Lenovo, a background work tab could be read and typed into, but
 coordinate clicks reported success without toggling a checkbox. Making the tab
 visible made clicks work. Keep the connected tab visible and verify actual state
-changes with v0.3.0. Visibility-aware input and explicit focus are being developed
-in Browser Bridge; this repo does not claim the old behavior is fixed already.
+changes with v0.3.0. Browser Bridge v0.3.1 now refuses hidden input and adds
+explicit `browser_focus` for the connected tab. The actual Lenovo regression test
+passed: hidden click/type/key caused no form changes, then focus and visible
+form interactions worked. Update the runtime and reload the extension to use it.
 
 ## Keep it simple
 

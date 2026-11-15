@@ -54,6 +54,14 @@ are NOT deployed over the private working Samsung helper during packaging and
 have not been installed on Lenovo. The original native helper passed one physical
 reboot/manual-startup check; the NEW cross-device tailnet route has not.
 
+## Browser visibility follow-up — November15,2026
+
+Browser Bridge0.3.1 passed25Python+26JS tests and actual Lenovo Chrome checks.
+Hidden click/type/key were refused without changing the form; explicit focus
+made the same connected tab visible. Text/checkbox/select/button and390x844
+checks passed. Viewport/start page restored and temporary fixture stopped.
+Minimized windows remain physically untested.
+
 ## Still open
 
 Other hardware/architectures, independent security review, multiple physical
