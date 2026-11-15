@@ -69,3 +69,13 @@ reboot/sleep cycles, changed Wi-Fi/VM addresses, throughput measurements, minimi
 browser/window cases, and generalized native-host installation on another device.
 Do not infer that two4GB computers form one8GB memory space or double an account's
 model allowance. No background agent task loop or database sync is included.
+
+## Detached test-job verification — November15,2026
+
+The helper suite now has16 tests:8 setup/transport,4 health-state and4 job-runner
+cases. On the Lenovo, a detached browser-bridge job against release0.3.1 ran25
+Python+26JavaScript checks and saved a passed result with both exit codes0.
+A separate detached workbench job at a994e7e ran all16 helper tests successfully.
+Both launch SSH commands returned before completion; a later independent SSH
+connection retrieved results. This verifies launcher-session independence, not
+survival of machine sleep or power loss. Job logs/boot IDs remain private.
