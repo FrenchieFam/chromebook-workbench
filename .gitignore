@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+build/
+dist/
+*.png
+*.jpg
+*.zip
+*.tgz
+*.state
+*.state.*
+auth.json
+config.js
+.env
+.env.*
+
+optional/chromeos-input/workbench-input

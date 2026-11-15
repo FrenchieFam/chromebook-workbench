@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Browser bridge check</title>
+<style>body{font:18px system-ui;max-width:650px;margin:40px auto;padding:20px;background:#152b35;color:#edf3ec}input,button,select{font:inherit;padding:10px;margin:8px 0}label{display:block}output{display:block;margin-top:20px;padding:18px;background:#284957}*{box-sizing:border-box}body{overflow-wrap:anywhere}input,select,button{max-width:100%}pre{overflow-wrap:anywhere}</style>
+<h1>Browser bridge check</h1><p>Temporary local test. No account data or network submissions.</p>
+<label for="message">Test message</label><input id="message" placeholder="Type a test message"><br>
+<label><input type="checkbox" id="enabled"> Enable check</label>
+<label for="mode">Mode</label><select id="mode"><option value="first">First</option><option value="second">Second</option></select><br>
+<button id="apply" type="button">Apply test values</button><output id="result">Waiting for test</output>
+<script>document.querySelector('#apply').addEventListener('click',()=>{document.querySelector('#result').textContent=JSON.stringify({message:document.querySelector('#message').value,enabled:document.querySelector('#enabled').checked,mode:document.querySelector('#mode').value});});</script><pre id="events" style="font-size:12px;white-space:pre-wrap">No mouse events observed</pre>
+<script>const eventLog=[];for(const name of ['mousedown','mouseup','click','change'])addEventListener(name,e=>{eventLog.push({event:name,target:e.target.id||e.target.tagName,x:e.clientX,y:e.clientY});document.querySelector('#events').textContent=JSON.stringify(eventLog.slice(-8));},true);</script></html>
