@@ -49,3 +49,24 @@ through that lid cycle, not deep-suspend or repeated-cycle reliability.
 Do not suspend only the Linux guest and describe
 that as a ChromeOS lid/suspend test. A full reboot is a separate test, with its
 own manual host startup when applicable.
+
+## Plugged-in availability
+
+For an attended setup that needs to accept remote work during idle periods, use
+ChromeOS Settings → System preferences → Power (older versions: Device → Power).
+Set only the plugged-in idle setting to **Keep display on** and keep the lid open.
+Leave battery sleep, lid-close sleep and screen-lock choices unchanged. This uses
+the native setting; it does not need a guest-Linux inhibitor or a keep-awake
+extension. The Linux guest's sleep policy is not a substitute for ChromeOS's.
+
+[Google's current power-setting instructions](https://support.google.com/chromebook/answer/3420029?hl=en)
+explain the control. A sleeping worker was unreachable during our portfolio
+preview, then returned healthy after the owner woke it. Unattended plugged-in
+availability with the new setting still needs a timed check. Do not infer that a
+working wake/reconnect test means a sleeping device remains reachable.
+
+Validate with spaced SSH and authenticated browser-status observations for at
+least15 minutes after changing the setting, while leaving the laptop untouched.
+Record AC power, fresh heartbeats and whether the connected tab changes. Avoid
+keyboard/mouse activity from the test, which would defeat an idle check. Report
+sampling intervals and any gaps rather than claiming uninterrupted availability.
