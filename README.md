@@ -133,3 +133,13 @@ is needed. It never resumes an owner-disconnected browser or sends TV controls.
 
 For day-to-day roles and the physical sleep/wake checklist, see
 [working together](docs/working-together.md).
+
+## Project case study and research
+
+[Two Chromebooks, one workbench](https://frenchiefam.dev/chromebook-workbench/)
+explains the architecture, real input bug and verification limits. The interactive
+bug explainer is a local illustration; it has no connection to the actual devices.
+[Architecture decisions](docs/architecture-decisions.md) records primary references
+and existing browser-tool alternatives without claiming a comparative benchmark.
+
+[![Project case study preview](https://frenchiefam.dev/chromebook-workbench/preview.png)](https://frenchiefam.dev/chromebook-workbench/)
