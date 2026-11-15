@@ -39,6 +39,13 @@ Record any manual step needed; do not call it automatic if you opened Linux or
 clicked Start. Honor Disconnect/banner cancellation; it is a deliberate pause,
 not a recovery failure to override.
 
-Physical sleep/wake is pending. Do not suspend only the Linux guest and describe
+One owner-performed Lenovo lid-close/reopen check passed on November15: the
+owner pressed Space after reopening, without unlocking, launching Linux or
+reconnecting the bridge. Pinned SSH, a fresh browser heartbeat and snapshot
+worked; the connected tab matched the pre-lid baseline. Both bridges ran0.3.1.
+Hardware suspend depth/duration was not instrumented, so this proves continuity
+through that lid cycle, not deep-suspend or repeated-cycle reliability.
+
+Do not suspend only the Linux guest and describe
 that as a ChromeOS lid/suspend test. A full reboot is a separate test, with its
 own manual host startup when applicable.
