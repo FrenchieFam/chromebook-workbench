@@ -61,8 +61,8 @@ extension. The Linux guest's sleep policy is not a substitute for ChromeOS's.
 
 [Google's current power-setting instructions](https://support.google.com/chromebook/answer/3420029?hl=en)
 explain the control. A sleeping worker was unreachable during our portfolio
-preview, then returned healthy after the owner woke it. Unattended plugged-in
-availability with the new setting still needs a timed check. Do not infer that a
+preview, then returned healthy after the owner woke it. A subsequent15-minute mixed AC/battery check passed all16 connection/heartbeat
+observations; see docs/validation.md for the exact scenario and limits. Do not infer that a
 working wake/reconnect test means a sleeping device remains reachable.
 
 Validate with spaced SSH and authenticated browser-status observations for at

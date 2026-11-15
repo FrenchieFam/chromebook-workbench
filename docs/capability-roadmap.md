@@ -6,7 +6,8 @@ access is not a prerequisite for the next portfolio project.
 
 ## Build useful reliability first
 
-1. Finish measured idle availability and record observed AC/battery changes.
+1. Measured15-minute mixed-power availability passed16 samples; extend testing
+   only for a concrete new workload or failure, rather than treating it as24/7 proof.
 2. Use bounded, persistent test jobs so SSH interruption does not lose a test's
    result. Keep a single writer/controller per repo/tab.
 3. Put short build/test/definition-of-done guidance in each project. Codex

@@ -79,3 +79,18 @@ A separate detached workbench job at a994e7e ran all16 helper tests successfully
 Both launch SSH commands returned before completion; a later independent SSH
 connection retrieved results. This verifies launcher-session independence, not
 survival of machine sleep or power loss. Job logs/boot IDs remain private.
+
+## Mixed-power availability — November15,2026
+
+A15-minute observation on the physical Lenovo completed with16 samples, roughly
+once per minute. Every sample had working pinned SSH, an authenticated connected
+browser0.3.1 heartbeat under1 second old, and the same work tab. The first3 samples
+reported AC power. The remaining13 reported battery power, starting near184 seconds;
+battery was88% at that first unplugged sample and86% at the final sample.
+
+The owner reported Keep display on for both AC and battery, lid open, with lid
+sleep still enabled. No keyboard/mouse activity was generated on Lenovo during
+the check; two ordinary detached test suites ran briefly. This supports sampled
+availability during this mixed-power idle/remote-work session. It is not proof
+of uninterrupted service between observations, long-term battery life, closed-lid
+availability, screen-off input, or operation through shutdown/critical battery.
