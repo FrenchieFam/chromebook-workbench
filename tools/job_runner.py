@@ -104,6 +104,9 @@ def main():
         if data['state']=='running' and identity(data.get('pid'))!=data.get('processIdentity'):
             data['state']='interrupted';data['note']='Runner is gone; inspect private logs and any remaining test processes. No job was restarted.'
         print(json.dumps(data,indent=2));return
-    folder,commands=SUITES[data['suite']];run_job(root,args.job,Path.home()/'projects'/folder,commands)
+    folder,commands=SUITES[data['suite']];repo=Path.home()/'projects'/folder
+    if data['suite']=='browser-bridge':
+        commands=[commands[0],[*commands[1],*[name for name in ('test_power.cjs','test_popup.cjs') if (repo/name).is_file()]]]
+    run_job(root,args.job,repo,commands)
 
 if __name__=='__main__':main()

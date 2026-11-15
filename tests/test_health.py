@@ -17,3 +17,8 @@ class HealthTests(unittest.TestCase):
     def test_generic_worker_without_staged_version_uses_explicit_requirement(self):
         result=assess({'service':'active','browser':{'reachable':True,'connected':True,'extensionVersion':'0.3.1'}},'0.3.1')
         self.assertEqual(result['state'],'ready');self.assertIsNone(result['stagedVersion'])
+    def test_worker_runtime_version_overrides_old_cli_default(self):
+        base={'service':'active','browser':{'reachable':True,'connected':True,'expectedExtensionVersion':'0.4.0','extensionVersion':'0.3.1'}}
+        self.assertEqual(assess(base,'0.3.1')['state'],'reload extension')
+        base['browser']['extensionVersion']='0.4.0'
+        self.assertEqual(assess(base,'0.3.1')['state'],'ready')

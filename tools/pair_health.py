@@ -25,7 +25,7 @@ def assess(report,required):
     connected=browser.get('connected') is True
     running=browser.get('extensionVersion')
     staged=browser.get('stagedExtensionVersion')
-    target=staged or required
+    target=staged or browser.get('expectedExtensionVersion') or required
     if report.get('error') or not service or not reachable:state='unavailable'
     elif not connected:state='disconnected'
     elif running!=target:state='reload extension'
