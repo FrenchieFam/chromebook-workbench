@@ -143,3 +143,11 @@ bug explainer is a local illustration; it has no connection to the actual device
 and existing browser-tool alternatives without claiming a comparative benchmark.
 
 [![Project case study preview](https://frenchiefam.dev/chromebook-workbench/preview.png)](https://frenchiefam.dev/chromebook-workbench/)
+
+## Run bounded tests on the worker
+
+[Worker test jobs](docs/test-jobs.md) persist results even after the SSH client
+exits, with fixed suites, a per-project OS lock and a time limit. This does not
+keep a sleeping machine awake or start another model session. The
+[capability roadmap](docs/capability-roadmap.md) separates implemented tools from
+researched power/browser options.
