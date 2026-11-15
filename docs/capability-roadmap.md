@@ -17,17 +17,22 @@ access is not a prerequisite for the next portfolio project.
 The test runner is implemented separately in tools/job_runner.py. It calls fixed
 ordinary test suites, not another AI agent. It cannot prevent machine sleep.
 
-## A useful optional power improvement
+## Optional timed system wake — implemented in Browser Bridge0.4.0
 
 Chrome's [power API](https://developer.chrome.com/docs/extensions/reference/api/power)
-can request `system` wakefulness while allowing the display to dim/turn off.
-A small timed, owner-enabled control could save screen power compared with
-permanent Keep display on. It would need the `power` permission, explicit enable,
-a visible expiry, release on Disconnect/timeout, restart reconciliation, and
-physical battery/AC testing. It must not claim to override lid close, shutdown,
-critical battery or policy. This remains a proposal; no permission was added. Keeping Linux jobs reachable
-with the screen off does not establish that native Chrome input remains visible
-or usable; test those cases separately before claiming browser availability.
+supports system wakefulness while allowing display dim/off. Browser Bridge now
+provides an owner-enabled1/15/30/60-minute session with optional power permission,
+countdown, Stop and release on disconnect/expiry/tab loss/restart. There is no
+remote enable command. [Behavior and limits](https://github.com/FrenchieFam/chromebook-browser-bridge/blob/main/docs/keep-awake.md)
+include session reconciliation and scheduling caveats.
+
+A real one-minute expiry and a configured15-minute battery idle-Sleep session
+passed on Lenovo: the owner confirmed screen off, sampled SSH/browser heartbeats
+stayed healthy, and the request was inactive after its deadline. Both Chromebooks
+run0.4.0; Samsung's wake session stays off. Tests are27 Python+44 JavaScript.
+This does not establish closed-lid/critical-battery/managed-policy overrides,
+continuous availability or browser input visibility while the display is off.
+It is one-device screen-off evidence, not a battery-runtime benchmark.
 
 ## Use maintained browser tooling when a project needs it
 

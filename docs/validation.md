@@ -94,3 +94,14 @@ the check; two ordinary detached test suites ran briefly. This supports sampled
 availability during this mixed-power idle/remote-work session. It is not proof
 of uninterrupted service between observations, long-term battery life, closed-lid
 availability, screen-off input, or operation through shutdown/critical battery.
+
+## Browser0.4.0 follow-up — November15,2026
+
+Bridge0.4.0 passed27 Python+44 JavaScript checks and live Lenovo one-minute expiry.
+A configured15-minute battery idle-Sleep session had177 healthy active SSH/browser
+observations and one unextended deadline; the owner confirmed screen off. A fresh
+inactive lease was observed after the deadline, battery82→80%. Sampling and one
+owner visual report are not continuous service or battery-runtime proof. Samsung's
+native popup and0.4.0 reconnect were also verified; its keep-awake remains off.
+Both pairing configurations stayed private and unchanged. The workbench helper
+suite now has17 tests, including expected-runtime version/mismatch handling.
